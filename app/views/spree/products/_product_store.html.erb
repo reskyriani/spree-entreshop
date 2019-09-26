@@ -1,0 +1,10 @@
+<div class="store_tlink">
+  <h3><%= Spree.t(:store_products) %></h3>
+  <%= link_to Spree.t(:visit_store), spree.stock_location_path(@stock_location), class: "store_link" %>
+</div>
+<br>
+<div class="row" data-hook="store_products">        
+  <% cache(cache_key_for_products) do %>
+    <%= render partial: 'product', collection: @store_products, locals: { taxon: @taxon } %>
+  <% end %>
+</div>
